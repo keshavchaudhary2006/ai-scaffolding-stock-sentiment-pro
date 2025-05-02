@@ -1,0 +1,47 @@
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Virtual Environment ──
+.venv/
+venv/
+env/
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Data & Models (large files) ──
+data/raw/*
+data/processed/*
+data/external/*
+models/*.pkl
+models/*.joblib
+models/*.pt
+models/*.h5
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/external/.gitkeep
+!models/.gitkeep
+
+# ── Reports (regenerable) ──
+reports/*.html
+reports/*.pdf
+
+# ── Environment / Secrets ──
+.env
+*.env
+config/secrets.yaml
+
+# ── Jupyter ──
+.ipynb_checkpoints/
+
+# ── OS ──
+.DS_Store
+Thumbs.db
