@@ -1,0 +1,12 @@
+# Stock Sentiment Predictor - Configuration
+
+data:
+  default_ticker: AAPL
+  default_period: 1y
+  interval: 1d
+  cache_dir: data/cache
+
+api_keys:
+  news_api: ${NEWS_API_KEY}
+  gnews: ${GNEWS_KEY}
+  finnhub: ${FINNHUB_KEY}
