@@ -10,3 +10,7 @@ api_keys:
   news_api: ${NEWS_API_KEY}
   gnews: ${GNEWS_KEY}
   finnhub: ${FINNHUB_KEY}
+
+processing:
+  clean_method: ffill
+  min_rows: 30
