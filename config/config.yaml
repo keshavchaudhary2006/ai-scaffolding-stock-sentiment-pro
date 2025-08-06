@@ -14,3 +14,8 @@ api_keys:
 processing:
   clean_method: ffill
   min_rows: 30
+
+sentiment:
+  backend: vader
+  finbert_model: ProsusAI/finbert
+  batch_size: 32
