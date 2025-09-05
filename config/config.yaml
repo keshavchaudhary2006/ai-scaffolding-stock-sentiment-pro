@@ -19,3 +19,9 @@ sentiment:
   backend: vader
   finbert_model: ProsusAI/finbert
   batch_size: 32
+
+features:
+  forecast_horizon: 1
+  sma_windows: [5, 10, 20, 50]
+  rsi_period: 14
+  lag_depths: [1, 2, 3, 5, 10]
