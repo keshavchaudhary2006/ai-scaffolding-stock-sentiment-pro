@@ -25,3 +25,9 @@ features:
   sma_windows: [5, 10, 20, 50]
   rsi_period: 14
   lag_depths: [1, 2, 3, 5, 10]
+
+model_training:
+  default_model: xgboost
+  val_size: 0.15
+  test_size: 0.20
+  random_state: 42
