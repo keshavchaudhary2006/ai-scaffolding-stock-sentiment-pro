@@ -1,1 +1,3 @@
-"""Test suite."""
+"""
+Tests — Stock Sentiment Predictor
+"""
