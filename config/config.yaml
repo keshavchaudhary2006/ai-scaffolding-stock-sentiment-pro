@@ -31,3 +31,13 @@ model_training:
   val_size: 0.15
   test_size: 0.20
   random_state: 42
+
+deep_learning:
+  cell_type: lstm
+  hidden_size: 128
+  num_layers: 2
+  seq_len: 20
+  dropout: 0.3
+  epochs: 50
+  batch_size: 32
+  lr: 0.001
