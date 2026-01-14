@@ -31,3 +31,10 @@ pytest-cov>=4.1.0
 # Optimization
 optuna>=3.4.0
 backtrader>=1.9.78
+
+# NLP Extended
+nltk>=3.8.1
+spacy>=3.7.2
+beautifulsoup4>=4.12.2
+python-dotenv>=1.0.0
+tqdm>=4.66.0
