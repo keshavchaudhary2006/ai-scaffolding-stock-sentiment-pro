@@ -41,3 +41,14 @@ deep_learning:
   epochs: 50
   batch_size: 32
   lr: 0.001
+
+hybrid_model:
+  cell_type: lstm
+  price_hidden: 128
+  price_layers: 2
+  sent_hidden: [64, 32]
+  fusion_hidden: 64
+  seq_len: 20
+  dropout: 0.3
+  epochs: 50
+  lr: 0.001
