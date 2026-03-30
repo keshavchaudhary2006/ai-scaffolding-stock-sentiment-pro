@@ -38,3 +38,9 @@ spacy>=3.7.2
 beautifulsoup4>=4.12.2
 python-dotenv>=1.0.0
 tqdm>=4.66.0
+
+# API / Dashboard
+fastapi>=0.108.0
+uvicorn[standard]>=0.25.0
+streamlit>=1.29.0
+plotly>=5.18.0
