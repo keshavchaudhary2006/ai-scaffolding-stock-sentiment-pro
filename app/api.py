@@ -47,7 +47,7 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 
 app = FastAPI(
     title="Stock Sentiment Predictor API",
-    version="0.2.0",
+    version="0.2.1",
     description=(
         "Predict stock price direction from news sentiment and technical "
         "features.  Supports real-time prediction, sentiment scoring, "
