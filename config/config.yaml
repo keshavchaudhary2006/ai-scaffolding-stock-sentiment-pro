@@ -1,54 +1,105 @@
-# Stock Sentiment Predictor - Configuration
+# ──────────────────────────────────────────────
+# Stock Sentiment Predictor — Configuration
+# ──────────────────────────────────────────────
 
-data:
-  default_ticker: AAPL
-  default_period: 1y
-  interval: 1d
-  cache_dir: data/cache
+project:
+  name: stock-sentiment-predictor
+  version: "0.1.0"
+  log_level: INFO
 
+# ── API Keys (override via .env in production) ──
 api_keys:
+  alpha_vantage: ${ALPHA_VANTAGE_KEY}
   news_api: ${NEWS_API_KEY}
-  gnews: ${GNEWS_KEY}
   finnhub: ${FINNHUB_KEY}
 
-processing:
-  clean_method: ffill
-  min_rows: 30
+# ── Data Settings ──
+data:
+  tickers:
+    - AAPL
+    - GOOGL
+    - MSFT
+    - TSLA
+    - AMZN
+  lookback_days: 365
+  raw_dir: data/raw
+  processed_dir: data/processed
 
+# ── Sentiment Settings ──
 sentiment:
-  backend: vader
-  finbert_model: ProsusAI/finbert
+  model: "distilbert-base-uncased-finetuned-sst-2-english"
   batch_size: 32
+  max_length: 512
+  sources:
+    - news_api
+    - rss_feeds
 
+# ── Feature Engineering ──
 features:
-  forecast_horizon: 1
-  sma_windows: [5, 10, 20, 50]
-  rsi_period: 14
-  lag_depths: [1, 2, 3, 5, 10]
+  technical_indicators:
+    - RSI
+    - MACD
+    - BB
+    - ATR
+    - OBV
+  sentiment_window_days: 7
+  rolling_windows:
+    - 5
+    - 10
+    - 20
 
-model_training:
-  default_model: xgboost
-  val_size: 0.15
-  test_size: 0.20
+# ── Model Training ──
+training:
+  model_type: xgboost          # xgboost | lightgbm | lstm
+  test_size: 0.2
   random_state: 42
+  hyperparameter_tuning: true
+  n_trials: 50                  # Optuna trials
+  output_dir: models/
 
+# -- Deep Learning --
 deep_learning:
-  cell_type: lstm
+  cell_type: lstm               # lstm | gru
+  seq_len: 20
   hidden_size: 128
   num_layers: 2
-  seq_len: 20
   dropout: 0.3
-  epochs: 50
-  batch_size: 32
+  bidirectional: false
   lr: 0.001
+  batch_size: 64
+  epochs: 100
+  patience: 15
+  weight_decay: 0.00001
 
+# -- Hybrid Model --
 hybrid_model:
-  cell_type: lstm
-  price_hidden: 128
-  price_layers: 2
-  sent_hidden: [64, 32]
-  fusion_hidden: 64
+  cell_type: lstm               # lstm | gru (price branch)
   seq_len: 20
+  hidden_size: 128
+  num_layers: 2
   dropout: 0.3
-  epochs: 50
+  bidirectional: false
+  sent_hidden: 64               # sentiment encoder intermediate dim
+  sent_out: 32                  # sentiment encoder output dim
+  fusion_hidden: 64             # fusion head hidden dim
   lr: 0.001
+  batch_size: 64
+  epochs: 100
+  patience: 15
+
+# ── Backtesting ──
+backtesting:
+  initial_cash: 100000
+  commission_pct: 0.001
+  strategy: sentiment_momentum
+
+# ── API Server ──
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: true
+
+# ── Dashboard ──
+dashboard:
+  port: 8501
+  theme: dark
