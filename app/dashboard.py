@@ -966,7 +966,7 @@ if run_button:
 
 st.markdown("---")
 st.markdown(
-    '<p class="footer-text">Stock Sentiment Predictor v0.2.1 '
+    '<p class="footer-text">Stock Sentiment Predictor v0.2.0 '
     '-- Built with Streamlit, Plotly, scikit-learn, PyTorch</p>',
     unsafe_allow_html=True,
 )
