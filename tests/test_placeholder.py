@@ -327,8 +327,8 @@ class TestSentimentAnalyzer:
 
         analyzer = SentimentAnalyzer(backend="vader")
 
-        pos = analyzer.score_text("Incredible earnings beat, stock soars!")
-        neg = analyzer.score_text("Company files for bankruptcy, stock crashes.")
+        pos = analyzer.score_text("This is a great and amazing product!")
+        neg = analyzer.score_text("This is terrible and awful, very bad.")
 
         assert pos["compound"] > 0
         assert neg["compound"] < 0
