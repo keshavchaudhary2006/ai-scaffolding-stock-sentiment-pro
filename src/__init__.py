@@ -1,8 +1,5 @@
 """
-Stock Sentiment Predictor — Core Library
-=========================================
-Reusable modules for data ingestion, sentiment analysis,
-feature engineering, model training, and backtesting.
+src — Core modules for the Stock Sentiment Predictor.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.1"
